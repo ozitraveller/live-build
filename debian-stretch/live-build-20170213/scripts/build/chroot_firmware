@@ -65,7 +65,7 @@ rm -f cache/contents.chroot/contents.${LB_PARENT_DISTRIBUTION}.${LB_ARCHITECTURE
 
 for _CONTENT in ${_CONTENTS}
 do
-	wget ${WGET_OPTIONS} ${_CONTENT} -O - | gunzip -c >> cache/contents.chroot/contents.${LB_PARENT_DISTRIBUTION}.${LB_ARCHITECTURES}
+	wget ${WGET_OPTIONS} ${_CONTENT} -O - | gunzip -c >> cache/contents.chroot/contents.${LB_PARENT_DISTRIBUTION}.${LB_ARCHITECTURES} || true
 
 	FIRMWARE_PACKAGES="${FIRMWARE_PACKAGES} $(awk '/^lib\/firmware/ { print $2 }' cache/contents.chroot/contents.${LB_PARENT_DISTRIBUTION}.${LB_ARCHITECTURES} | sort -u)"
 done
@@ -97,7 +97,7 @@ then
 
 	for _CONTENT in ${_CONTENTS}
 	do
-		wget ${WGET_OPTIONS} ${_CONTENT} -O - | gunzip -c >> cache/contents.chroot/contents.${LB_DISTRIBUTION}.${LB_ARCHITECTURES}
+		wget ${WGET_OPTIONS} ${_CONTENT} -O - | gunzip -c >> cache/contents.chroot/contents.${LB_DISTRIBUTION}.${LB_ARCHITECTURES} || true
 
 		FIRMWARE_PACKAGES="${FIRMWARE_PACKAGES} $(awk '/^lib\/firmware/ { print $2 }' cache/contents.chroot/contents.${LB_DISTRIBUTION}.${LB_ARCHITECTURES} | sort -u)"
 	done
