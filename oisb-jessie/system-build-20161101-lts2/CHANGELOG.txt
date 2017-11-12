@@ -1,0 +1,92 @@
+2016-12-20	Daniel Baumann <daniel.baumann@open-infrastructure.net>
+
+	* Releasing version 20161101-lts2.
+
+	[ Daniel Baumann ]
+	* Removing trailing slash in mirror defaults.
+	* Using deb.debian.org with https as default mirror.
+	* Correcting https check in archive lists to cover both list and lists.* files.
+	* Including ca-certificates too when including apt-transport-https.
+
+2016-11-01	Daniel Baumann <daniel.baumann@open-infrastructure.net>
+
+	* Releasing version 20161101-lts1.
+
+2016-11-01	Daniel Baumann <daniel.baumann@open-infrastructure.net>
+
+	* Releasing version 20161101.
+
+	[ Daniel Baumann ]
+	* Using references to system-build instead of live-build.
+	* Using system-boot instead of live-boot.
+	* Using system-config instead of live-config.
+	* Dropping references to live-tools.
+	* Making config check for https in archive list files silent.
+
+	[ Chris Lamb ]
+	* Exposing exposes the SOURCE_DATE_EPOCH variable when running scripts inside the chroot, otherwise the chroot operation resets the environment (Closes: #833118).
+
+	[ Daniel Baumann ]
+	* Removing automatic mode setting.
+	* Adding workaround for user-setup.
+	* Setting default debian mirrors to deb.debian.org.
+
+	[ Sophie Brun ]
+	* Handling packages.chroot with an explicitly trusted file:// repository.
+
+2016-07-01	Daniel Baumann <daniel.baumann@open-infrastructure.net>
+
+	* Releasing version 20160701.
+
+	[ Daniel Baumann ]
+	* Adding commit messages to previous changelog.
+	* Removing support for using aptitude instead of apt.
+	* Including apt-transport-https if archives are used with https.
+
+	[ Kristian Klausen ]
+	* Fixing typo in binary_syslinux (Closes: #832686).
+	* Switching d-i.debian.org URIs from http to https (Closes: #832680).
+	* Disabling ext4 64bit features when using extlinux.
+
+	[ Chris Lamb ]
+	* Setting xorriso's "modification time" to SOURCE_DATE_EPOCH as a first step for reproducible ISO images (Closes: #832689).
+
+2016-06-01	Daniel Baumann <daniel.baumann@open-infrastructure.net>
+
+	* Releasing version 20160601.
+
+	[ Carlos Zuferri ]
+	* Adding missing file extension to hdd images.
+
+	[ Adrian Gibanel Lopez ]
+	* Adding multi bootloader support.
+	* Adding loopback cfg support.
+
+	[ Maximilian Mehnert ]
+	* Forcing link creation when diverting flash-kernel.
+	* Starting partition at specific place for old BIOSes.
+	* Fixing coding style in binary_hdd.
+
+	[ Carlos Zuferri ]
+	* Using 'Live Systems Project' as default project in .pot files.
+
+	[ trebmuh ]
+	* Adding French manpage translations.
+
+	[ Ben Armstrong ]
+	* Removing 586 flavour for i386 architecture (Closes: #832705).
+
+	[ Raphaël Hertzog ]
+	* Better handling empty package lists.
+	* Dropping ixp4xx from available armel flavors.
+	* Adding symlinks for libgpl.c32 and libmenu.c32.
+
+	[ Kristian Klausen ]
+	* Including ext{3,4} journal size when calculating image size (Closes: #832671).
+
+	[ Daniel Baumann ]
+	* Correcting version string in changelog.
+
+2016-05-01	Daniel Baumann <daniel.baumann@open-infrastructure.net>
+
+	* Releasing version 20160501.
