@@ -340,7 +340,7 @@ case "${LB_CHROOT_FILESYSTEM}" in
 			esac
 		fi
 
-		MKSQUASHFS_OPTIONS="${MKSQUASHFS_OPTIONS} -comp xz"
+		MKSQUASHFS_OPTIONS="${MKSQUASHFS_OPTIONS} -comp xz "${MKSQUASHFS_OPTION_XBCJ}" -Xdict-size 75%"
 
 		case "${LB_BUILD_WITH_CHROOT}" in
 			true)
