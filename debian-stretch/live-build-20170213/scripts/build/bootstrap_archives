@@ -26,12 +26,22 @@ fi
 
 Arguments "${@}"
 
+Echo_message "######### bootstrap_archives"
+
+
 # Reading configuration files
 Read_conffiles config/all config/common config/bootstrap config/chroot config/binary config/source
 Set_defaults
 
 # Requiring stage file
 Require_stagefile .build/config .build/bootstrap
+
+Echo_message "######### bootstrap_archives"
+Echo_message "# LB_DERIVATIVE : "$LB_DERIVATIVE
+Echo_message "# LB_PARENT_MIRROR_CHROOT : "$LB_PARENT_MIRROR_CHROOT
+Echo_message "# LB_PARENT_DISTRIBUTION : "$LB_PARENT_DISTRIBUTION
+Echo_message "# LB_PARENT_ARCHIVE_AREAS : "$LB_PARENT_ARCHIVE_AREAS
+Echo_message "######### bootstrap_archives"
 
 case "${LB_DERIVATIVE}" in
 	true)

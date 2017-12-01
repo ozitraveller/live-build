@@ -160,9 +160,12 @@ Local_arguments ()
 	fi
 
 	eval set -- "${ARGUMENTS}"
-
+				
 	while true
 	do
+	#~ echo "##################################"
+	#~ echo "# ${1} : ${2}"
+	#~ echo "##################################"	
 		case "${1}" in
 			--dump)
 				# Dump version

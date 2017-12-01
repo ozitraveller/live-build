@@ -34,7 +34,10 @@ else
 	WGET_OPTIONS="${WGET_OPTIONS} --no-verbose"
 fi
 
-
+Echo_message "######### installer_debian"
+Echo_message "# LB_DEBIAN_INSTALLER : "$LB_DEBIAN_INSTALLER
+Echo_message "# LB_DEBIAN_INSTALLER_GUI : "$LB_DEBIAN_INSTALLER_GUI
+Echo_message "######### installer_debian"
 
 # Check d-i configuration
 case "${LB_DEBIAN_INSTALLER}" in
@@ -380,7 +383,7 @@ Echo_message "######### 6"
 				FIRMWARE_PACKAGES="${FIRMWARE_PACKAGES} firmware-linux"
 			else
 				case "${LB_DERIVATIVE_IS_BASED_ON}" in
-					debian)
+					debian|devuan)
 						FIRMWARE_PACKAGES="${FIRMWARE_PACKAGES} firmware-linux"
 						;;
 					*)

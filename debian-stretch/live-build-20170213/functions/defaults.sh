@@ -110,6 +110,11 @@ Set_defaults ()
 		if [ -e /etc/progress-linux_version ]
 		then
 			LB_MODE="${LB_MODE:-progress-linux}"
+		#~ else
+			#~ LB_MODE="${LB_MODE:-debian}"
+		elif [ -e /etc/devuan_version ]
+		then
+			LB_MODE="${LB_MODE:-devuan}"
 		else
 			LB_MODE="${LB_MODE:-debian}"
 		fi
@@ -122,6 +127,12 @@ Set_defaults ()
 			LB_DERIVATIVE="true"
 			LB_DERIVATIVE_IS_BASED_ON="debian"
 			;;
+			
+		devuan)
+			LB_DISTRIBUTION="${LB_DISTRIBUTION:-jessie}"
+			LB_DERIVATIVE="false"
+			LB_DERIVATIVE_IS_BASED_ON="devuan"
+			;;			
 
 		*)
 			LB_DISTRIBUTION="${LB_DISTRIBUTION:-stretch}"
@@ -325,6 +336,12 @@ Set_defaults ()
 
 	# Setting mirror to fetch packages from
 	case "${LB_MODE}" in
+		devuan)
+			LB_MIRROR_BOOTSTRAP="${LB_MIRROR_BOOTSTRAP:-http://packages.devuan.org/merged}"
+			#~ LB_MIRROR_BOOTSTRAP="${LB_MIRROR_BOOTSTRAP:-https://pkgmaster.devuan.org/devuan/}"
+			LB_PARENT_MIRROR_BOOTSTRAP="${LB_PARENT_MIRROR_BOOTSTRAP:-${LB_MIRROR_BOOTSTRAP}}"
+			;;
+			
 		debian)
 			LB_MIRROR_BOOTSTRAP="${LB_MIRROR_BOOTSTRAP:-http://ftp.debian.org/debian/}"
 			LB_PARENT_MIRROR_BOOTSTRAP="${LB_PARENT_MIRROR_BOOTSTRAP:-${LB_MIRROR_BOOTSTRAP}}"
@@ -341,6 +358,12 @@ Set_defaults ()
 
 	# Setting security mirror to fetch packages from
 	case "${LB_MODE}" in
+		devuan)
+			LB_MIRROR_CHROOT_SECURITY="${LB_MIRROR_CHROOT_SECURITY:-http://packages.devuan.org/merged}"
+			#~ LB_MIRROR_CHROOT_SECURITY="${LB_MIRROR_CHROOT_SECURITY:-http://pkgmaster.devuan.org/devuan/}"
+			LB_PARENT_MIRROR_CHROOT_SECURITY="${LB_PARENT_MIRROR_CHROOT_SECURITY:-${LB_MIRROR_CHROOT_SECURITY}}"
+			;;
+			
 		debian)
 			LB_MIRROR_CHROOT_SECURITY="${LB_MIRROR_CHROOT_SECURITY:-http://security.debian.org/}"
 			LB_PARENT_MIRROR_CHROOT_SECURITY="${LB_PARENT_MIRROR_CHROOT_SECURITY:-${LB_MIRROR_CHROOT_SECURITY}}"
@@ -354,6 +377,12 @@ Set_defaults ()
 
 	# Setting mirror which ends up in the image
 	case "${LB_MODE}" in
+		devuan)
+			LB_MIRROR_BINARY="${LB_MIRROR_BINARY:-http://packages.devuan.org/merged}"
+			#~ LB_MIRROR_BINARY="${LB_MIRROR_BINARY:-https://pkgmaster.devuan.org/devuan/}"
+			LB_PARENT_MIRROR_BINARY="${LB_PARENT_MIRROR_BINARY:-${LB_MIRROR_BINARY}}"
+			;;
+
 		debian)
 			LB_MIRROR_BINARY="${LB_MIRROR_BINARY:-http://httpredir.debian.org/debian/}"
 			LB_PARENT_MIRROR_BINARY="${LB_PARENT_MIRROR_BINARY:-${LB_MIRROR_BINARY}}"
@@ -367,6 +396,11 @@ Set_defaults ()
 
 	# Setting security mirror which ends up in the image
 	case "${LB_MODE}" in
+		devuan)
+			LB_MIRROR_BINARY_SECURITY="${LB_MIRROR_BINARY_SECURITY:-http://packages.devuan.org/merged}"
+			#~ LB_MIRROR_BINARY_SECURITY="${LB_MIRROR_BINARY_SECURITY:-https://pkgmaster.devuan.org/devuan/}"
+			LB_PARENT_MIRROR_BINARY_SECURITY="${LB_PARENT_MIRROR_BINARY_SECURITY:-${LB_MIRROR_BINARY_SECURITY}}"
+			;;
 		debian)
 			LB_MIRROR_BINARY_SECURITY="${LB_MIRROR_BINARY_SECURITY:-http://security.debian.org/}"
 			LB_PARENT_MIRROR_BINARY_SECURITY="${LB_PARENT_MIRROR_BINARY_SECURITY:-${LB_MIRROR_BINARY_SECURITY}}"
@@ -383,7 +417,7 @@ Set_defaults ()
 			LB_PARENT_MIRROR_DEBIAN_INSTALLER="${LB_PARENT_MIRROR_DEBIAN_INSTALLER:-${LB_MIRROR_CHROOT}}"
 			LB_MIRROR_DEBIAN_INSTALLER="${LB_MIRROR_DEBIAN_INSTALLER:-${LB_MIRROR_CHROOT}}"
 			;;
-
+			
 		*)
 			LB_MIRROR_DEBIAN_INSTALLER="${LB_MIRROR_DEBIAN_INSTALLER:-${LB_MIRROR_CHROOT}}"
 			LB_PARENT_MIRROR_DEBIAN_INSTALLER="${LB_PARENT_MIRROR_DEBIAN_INSTALLER:-${LB_PARENT_MIRROR_CHROOT}}"
@@ -427,7 +461,7 @@ Set_defaults ()
 			;;
 
 		i386)
-                        LB_LINUX_FLAVOURS="${LB_LINUX_FLAVOURS:-686-pae}"
+            LB_LINUX_FLAVOURS="${LB_LINUX_FLAVOURS:-586}"
 			;;
 
 		ia64)
