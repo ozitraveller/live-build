@@ -257,6 +257,18 @@ Set_defaults ()
 			esac
 			;;
 
+		devuan)
+			case "${LB_SYSTEM}" in
+				live)
+					LB_INITSYSTEM="${LB_INITSYSTEM:-sysvinit}"
+					;;
+
+				normal)
+					LB_INITSYSTEM="${LB_INITSYSTEM:-none}"
+					;;
+			esac
+			;;
+			
 		*)
 			case "${LB_SYSTEM}" in
 				live)
