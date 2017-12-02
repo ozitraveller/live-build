@@ -346,7 +346,7 @@ Echo_message "######### 4"
 	DI_PACKAGES="${DI_PACKAGES} busybox cryptsetup mdadm lvm2 xfsprogs jfsutils"
 
 	case "${LB_MODE}" in
-		debian)
+		debian|devuan)
 			DI_REQ_PACKAGES="${DI_REQ_PACKAGES} console-setup keyboard-configuration kbd"
 			DI_PACKAGES="${DI_PACKAGES} console-setup keyboard-configuration kbd"
 			;;
